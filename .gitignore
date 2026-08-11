@@ -1,0 +1,9 @@
+# Personal assets — do not share
+assets/
+
+# Build / runtime artifacts
+__pycache__/
+*.zip
+
+# Personal state
+pet-settings.json
