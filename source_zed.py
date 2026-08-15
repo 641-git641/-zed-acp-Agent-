@@ -99,10 +99,10 @@ class ZedSource:
         component = match.group("component")
         level = match.group("level")
 
+        if level == "ERROR" and component.lower().startswith("agent"):
+            return Event("failure", ts)      
         if _ACP_CONNECTION.search(line) or _ACP_STDERR.search(component + " " + line):
             return Event("activity", ts)
-        if level == "ERROR" and component.lower().startswith("agent"):
-            return Event("failure", ts)
         return None
 
     def probe_active(self) -> bool:
